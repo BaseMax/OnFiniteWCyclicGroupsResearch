@@ -18,10 +18,18 @@ for i in [1..2000] do
     fi;
 od;
 
+selected_i := [30];
+
 for i in selected_i do
     groups := AllSmallGroups(i);
+    Print(groups, "\n");
     for group in groups do
-        # Print(group);
+        Print(group, "\t");
+        Print(StructureDescription(group), "\n");
+        subs := ConjugacyClassesSubgroups(group);
+        for sub in subs do
+            Print("\t ==> ", sub, "\n");
+        od;
         # TODO, check the group
     od;
 od;
