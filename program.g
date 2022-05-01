@@ -29,31 +29,49 @@ od;
 
 selected_i := [30];
 
+Print("<div class=\"app\">\n");
 for i in selected_i do
     groups := AllSmallGroups(i);
     # groups := AllSmallGroups(30);
-    Print(groups, "\n");
-    for group in groups do
-        Print(group, "          ");
-        Print(StructureDescription(group), "\n");
-        subs := AllSubgroups(group);
+    Print("\t<div class=\"item\">\n");
+        Print("\t\t<h1>SmallGroups of ", i, "</h1>\n<div id=\"smallgroups-", i ,"\">\n");
+        Print("\t\t<pre>", groups, "</pre>\n");
 
-        counters := [];
-        for sub in subs do
-            sub_order := Order(sub);
-            if counter_has(counters, sub_order) then
-                counters[sub_order][1] := counters[sub_order][1] + 1;
-            else
-                counters[sub_order] := [1, sub_order];
-            fi;
-            Print("   ", sub_order, "   ->   ", sub, "\n");
-        od;
+        Print("\t\t<ul class=\"smallgroups\">\n");
+            for group in groups do
+                Print("\t\t\t<li class=\"smallgroup\">", group, " (", StructureDescription(group), ")</li>\n");
+                    # Print(group, "          ");
+                    # Print(StructureDescription(group), "\n");
+                    subs := AllSubgroups(group);
 
-        Print("   Analyze:\n");
-        for counter in counters do
-            # Print(counter, "\t");
-            Print("     ", counter[2], " => ", counter[1], " repeat", "\n");
-        od;
-        Print("\n");
-    od;
+                    Print("\t\t\t\t<button class=\"view-subgroups\">View sub groups</button>\n");
+                    Print("\t\t\t\t<button class=\"view-subgroups-repeat\">View repetation of order in sub groups</button>\n");
+
+                    Print("\t\t\t\t<table class=\"subgroups\">\n");
+                        Print("\t\t\t\t\t<thead><tr><td>SubGroup</td><td>Order</td></tr></thead>", "\n");
+                        counters := [];
+                        for sub in subs do
+                            sub_order := Order(sub);
+                            if counter_has(counters, sub_order) then
+                                counters[sub_order][1] := counters[sub_order][1] + 1;
+                            else
+                                counters[sub_order] := [1, sub_order];
+                            fi;
+                            Print("\t\t\t\t\t<tr><td>", sub, "</td><td>", sub_order, "</td></tr>\n");
+                        od;
+                    Print("\t\t\t\t</table>\n");
+
+                    Print("\t\t\t\t<table class=\"subgroups-repeat\">\n");
+                        Print("\t\t\t\t\t<thead><tr><td>Order</td><td>Repeat</td></tr></thead>", "\n");
+                    for counter in counters do
+                        # Print(counter, "\t");
+                        Print("\t\t\t\t\t<tr><td>", counter[2], "</td><td>", counter[1], "</td></tr>", "\n");
+                    od;
+                    Print("\t\t\t\t</table>\n");
+
+                Print("\t\t\t</li>\n");
+            od;
+        Print("\t\t</ul>\n");
+    Print("\t</div>\n");
 od;
+Print("</div>\n");
