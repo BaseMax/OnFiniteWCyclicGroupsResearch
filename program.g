@@ -8,6 +8,15 @@
 # StructureDescription( G );
 #   "A5"
 
+counter_has := function(counters, looking_for)
+    for counter in counters do
+        if counter[2] = looking_for then
+            return true;
+        fi;
+    od;
+    return false;
+end;
+
 selected_i := [];
 for i in [1..2000] do
     factors := FactorsInt(i);
@@ -22,14 +31,29 @@ selected_i := [30];
 
 for i in selected_i do
     groups := AllSmallGroups(i);
+    # groups := AllSmallGroups(30);
     Print(groups, "\n");
     for group in groups do
-        Print(group, "\t");
+        Print(group, "          ");
         Print(StructureDescription(group), "\n");
-        subs := ConjugacyClassesSubgroups(group);
+        subs := AllSubgroups(group);
+
+        counters := [];
         for sub in subs do
-            Print("\t ==> ", sub, "\n");
+            sub_order := Order(sub);
+            if counter_has(counters, sub_order) then
+                counters[sub_order][1] := counters[sub_order][1] + 1;
+            else
+                counters[sub_order] := [1, sub_order];
+            fi;
+            Print("   ", sub_order, "   ->   ", sub, "\n");
         od;
-        # TODO, check the group
+
+        Print("   Analyze:\n");
+        for counter in counters do
+            # Print(counter, "\t");
+            Print("     ", counter[2], " => ", counter[1], " repeat", "\n");
+        od;
+        Print("\n");
     od;
 od;
