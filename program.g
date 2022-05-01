@@ -12,16 +12,16 @@ selected_i := [];
 for i in [1..2000] do
     factors := FactorsInt(i);
     factors_set := Set(factors);
-    if Length(factors_set) = 2 then
+    if Length(factors_set) = 3 then
         Print(i, " => ", factors, "\n");
         Add(selected_i, i);
     fi;
 od;
 
 for i in selected_i do
-    # number_of_groups := NrSmallGroups(i);
     groups := AllSmallGroups(i);
     for group in groups do
+        # Print(group);
         # TODO, check the group
     od;
 od;
