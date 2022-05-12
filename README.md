@@ -1,4 +1,4 @@
-# On Finite W-Cyclic Groups Research
+# On Finite ω-Cyclic Groups Research
 
 **ICOMAA 2022 – International Conference on Mathematical Advances and  Applications**
 
