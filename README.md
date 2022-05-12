@@ -7,5 +7,3 @@ By using this program I achieved our research result and I give a talk at the 5t
 **Conference Website:** https://2022.icomaas.com/
 
 View sample data: https://basemax.github.io/OnFiniteWCyclicGroupsResearch/output.html
-
-Contact: alim [at] kashanu [dot] ac [dot] ir
