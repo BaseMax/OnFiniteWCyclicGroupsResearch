@@ -1,11 +1,11 @@
-# OnFinitew-CyclicGroupsResearch
+# On Finite W-Cyclic Groups Research
 
 **ICOMAA 2022 – International Conference on Mathematical Advances and  Applications**
 
-Conference website: https://2022.icomaas.com/
+By using this program I achieved my research result and I give a talk at the 5th International Conference on Mathematical Advances and Applications in Istanbul, Turkey.
 
-I have a presentation in this conference today.
+**Conference Website:** https://2022.icomaas.com/
 
 View sample data: https://basemax.github.io/OnFiniteWCyclicGroupsResearch/output.html
 
-Hope to see you ^_^
+Contact: alim [at] kashanu [dot] ac [dot] ir
